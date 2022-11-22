@@ -1,2 +1,2 @@
 # TheJoker
-virtual mentorship for teens, anxiety, and depression people in need
+Virtual mentorship for teens, anxiety, and depression people in need
