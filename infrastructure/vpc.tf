@@ -1,9 +1,9 @@
-resource "aws_vpc" "myvpc" {
+resource "aws_vpc" "application-vpc" {
   cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_subnet" "public_subnet_a" {
-  vpc_id     = aws_vpc.myvpc.id
+  vpc_id     = aws_vpc.application-vpc.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-west-2a"
 
@@ -13,7 +13,7 @@ resource "aws_subnet" "public_subnet_a" {
 }
 
 resource "aws_subnet" "public_subnet_b" {
-  vpc_id     = aws_vpc.myvpc.id
+  vpc_id     = aws_vpc.application-vpc.id
   cidr_block = "10.0.2.0/24"
   availability_zone = "us-west-2b"
 
@@ -23,7 +23,7 @@ resource "aws_subnet" "public_subnet_b" {
 }
 
 resource "aws_subnet" "private_subnet_a" {
-  vpc_id     = aws_vpc.myvpc.id
+  vpc_id     = aws_vpc.application-vpc.id
   cidr_block = "10.0.3.0/24"
   availability_zone = "us-west-2a"
 
@@ -33,7 +33,7 @@ resource "aws_subnet" "private_subnet_a" {
 }
 
 resource "aws_subnet" "private_subnet_b" {
-  vpc_id     = aws_vpc.myvpc.id
+  vpc_id     = aws_vpc.application-vpc.id
   cidr_block = "10.0.4.0/24"
   availability_zone = "us-west-2b"
 
@@ -43,11 +43,11 @@ resource "aws_subnet" "private_subnet_b" {
 }
 
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.application-vpc.id
 }
 
 resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.application-vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -87,7 +87,7 @@ resource "aws_nat_gateway" "nat" {
 }
 
 resource "aws_default_route_table" "private_route_table" {
-  default_route_table_id = aws_vpc.myvpc.default_route_table_id
+  default_route_table_id = aws_vpc.application-vpc.default_route_table_id
 
   route {
     cidr_block = "0.0.0.0/0"
