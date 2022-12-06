@@ -9,7 +9,7 @@ def save_joke_to_s3(joke):
     joke_data_string = json.dumps(joke)
     joke_data_bytes = str.encode(joke_data_string)
     s3_client.put_object(
-        Body = "somebody",
+        Body = joke_data_bytes,
         Bucket = joke_data_bucket,
         Key = joke["id"]+".json"
     )
