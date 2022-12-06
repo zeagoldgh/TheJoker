@@ -1,19 +1,5 @@
-import requests
-import json
+from chuck_norris_api import get_new_joke
+from s3_upload_joke import upload_joke
 
-url = "https://api.chucknorris.io/jokes/random"
-response = requests.get(url)
-data = response.json()
-
-print ("New Joke:")
-print (data["value"])
-
-joke_data = {
-    "id": data["id"],
-    "joke": data["value"],
-} 
-
-print(joke_data)
-
-with open("joke.json", "w") as f:
-        f.write(json.dumps(joke_data))
+joke_data_to_save = get_new_joke()
+upload_joke(joke_data_to_save)
