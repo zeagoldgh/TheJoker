@@ -6,7 +6,7 @@ resource "aws_lambda_function" "joke_crawler" {
   handler    = "crawler.handler"
   timeout       = 300
   runtime       = "python3.9"
-  layer         =[aws_lambda_layer_version.requests_layer.arn]
+  layers         =[aws_lambda_layer_version.requests_layer.arn]
 }
 
 resource "aws_lambda_layer_version" "requests_layer" {
