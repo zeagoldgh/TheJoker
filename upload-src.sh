@@ -8,7 +8,7 @@ zip -r ../../build/joke-crawler.zip .
 cd ../..
 
 # "upload to s3"
-aws s3 cp build/joke-data-crawler.zip s3://joke-src-bucket-dzaa1417/
+aws s3 cp build/joke-crawler.zip s3://joke-src-bucket-dzaa1417/
 
 cd requests-layer
 #pip3 install -r requirements.txt --target python/lib/python3.9/site-packages
