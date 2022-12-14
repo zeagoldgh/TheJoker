@@ -13,7 +13,3 @@ def save_joke_to_s3(joke):
         Bucket = joke_data_bucket,
         Key = joke["id"]+".json"
     )
-
-def save_jokes_to_s3(jokes):
-    for joke in jokes:
-        save_joke_to_s3(joke)
