@@ -14,3 +14,4 @@ def save_joke_to_dynamodb(joke):
 def save_jokes_to_dynamodb(jokes):
     for joke in jokes:
         save_joke_to_dynamodb(joke)
+        
