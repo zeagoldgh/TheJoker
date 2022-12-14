@@ -3,7 +3,7 @@ resource "aws_lambda_function" "joke_crawler" {
   s3_bucket     = "joke-src-bucket-dzaa1417"
   s3_key        = "joke-crawler.zip"
   role          = local.iam_role
-  handler    = "crawler.handler"
+  handler    = "dynamodb_crawler.handler"
   timeout       = 300
   runtime       = "python3.9"
   layers         =[aws_lambda_layer_version.requests_layer.arn]
