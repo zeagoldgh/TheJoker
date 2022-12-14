@@ -8,6 +8,11 @@ resource "aws_lambda_function" "joke_crawler" {
   runtime       = "python3.9"
   layers         =[aws_lambda_layer_version.requests_layer.arn]
 
+  environment {
+    variables = {
+      JOKES_TABLE_NAME = aws_dynamodb_table.jokes.name
+    }
+  }
 }
 
 resource "aws_lambda_layer_version" "requests_layer" {

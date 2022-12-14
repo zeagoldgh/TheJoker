@@ -3,7 +3,7 @@ import os
 
 dynamodb = boto3.resource("dynamodb")
 
-jokes_table_name = "joke"
+jokes_table_name = os.getenv("JOKES_TABLE_NAME")
 
 jokes_table = dynamodb.Table(jokes_table_name)
 
