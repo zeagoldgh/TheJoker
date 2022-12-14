@@ -2,7 +2,7 @@ from chucknorrisapi import load_joke
 from s3_utils import save_joke_to_s3
 
 
-def map_jokes(joke_from_api):
+def map_joke(joke_from_api):
     
         
     return ({
@@ -12,7 +12,7 @@ def map_jokes(joke_from_api):
 
 def handler(event, context):
     joke_from_api = load_joke()
-    joke = map_jokes(joke_from_api)
+    joke = map_joke(joke_from_api)
     save_joke_to_s3(joke)
     
 
