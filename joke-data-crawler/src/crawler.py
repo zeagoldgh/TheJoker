@@ -1,4 +1,4 @@
-from chucknorrisapi import load_jokes
+from chucknorrisapi import load_joke
 from s3_utils import save_joke_to_s3
 
 
@@ -11,9 +11,9 @@ def map_jokes(joke_from_api):
         })
 
 def handler(event, context):
-    jokes_from_api = load_jokes()
-    jokes = map_jokes(jokes_from_api)
-    save_joke_to_s3(jokes)
+    joke_from_api = load_joke()
+    joke = map_jokes(joke_from_api)
+    save_joke_to_s3(joke)
     
 
 if __name__ == "__main__":
