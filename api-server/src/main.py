@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 import uvicorn
+import boto3
 
 
 app = FastAPI()
