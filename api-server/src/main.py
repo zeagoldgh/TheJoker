@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+import uvicorn
 
 
 app = FastAPI()
@@ -25,4 +26,6 @@ def getJoke(id):
         if(joke["id"] == id):
             return joke
     raise HTTPException(status_code=404, detail="Joke with id " + id + " not found")
-    
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=80)
