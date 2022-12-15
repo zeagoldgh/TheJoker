@@ -3,6 +3,13 @@ from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
+jokes_data = [{
+        "id": "id1",
+        "value": "Hilarious Joke"
+    },{
+        "id": "id2",
+        "value": "Funny Joke"
+    }]
 
 @app.get("/")
 def health():
@@ -10,10 +17,12 @@ def health():
 
 @app.get("/joke")
 def getJokes():
-    return [{
-        "id": "id1",
-        "value": "Hilarious Joke"
-    },{
-        "id": "id2",
-        "value": "Funny Joke"
-    }]
+    return jokes_data
+
+@app.get("/joke/{id}")
+def getJoke(id):
+    for joke in jokes_data:
+        if(joke["id"] == id):
+            return joke
+    raise HTTPException(status_code=404, detail="Joke with id " + id + " not found")
+    
