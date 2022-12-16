@@ -11,6 +11,14 @@ resource "aws_security_group" "allow_http" {
     security_groups = [aws_security_group.allow_http_lb.id]
   }
 
+  ingress {
+    description = "ssh"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port        = 0
     to_port          = 0
@@ -22,4 +30,20 @@ resource "aws_security_group" "allow_http" {
   tags = {
     Name = "allow_http"
   }
+}
+
+resource "aws_instance" "joke_webserver" {
+  ami                         = "ami-094125af156557ca2"
+  instance_type               = "t3.micro"
+  subnet_id                   = aws_subnet.public_subnet_a.id
+  associate_public_ip_address = true
+  vpc_security_group_ids      = [aws_security_group.allow_http.id]
+  key_name                    = "vockey"
+  user_data                   = file("script/userdata.sh")
+  iam_instance_profile        = "LabInstanceProfile"
+}
+
+output "joke_webserver_ip" {
+  value =  aws_instance.joke_webserver.public_ip
+  description = "Public ip address"
 }
