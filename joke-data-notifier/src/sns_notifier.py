@@ -29,3 +29,4 @@ def handler(event, context):
     for record in event["Records"]:
         handler_record(record)
     print(event)
+    
