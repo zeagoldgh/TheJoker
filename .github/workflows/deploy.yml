@@ -24,3 +24,9 @@ jobs:
           sh setup-terraform-bucket.sh
           terraform init
           terraform apply -auto-approve
+      - name: setup src bucket
+        run: |
+          sh setup-src-bucket.sh
+      - name: build and upload src
+        run: |
+          sh upload-src.sh
