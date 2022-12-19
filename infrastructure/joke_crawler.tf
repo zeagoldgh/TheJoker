@@ -1,11 +1,11 @@
 resource "aws_lambda_function" "joke_crawler" {
   function_name = "joke_crawler"
-  s3_bucket     = "joke-src-bucket-dzaa1417"
-  s3_key        = "joke-crawler.zip"
+  filename        = "../build/joke-crawler.zip"
   role          = local.iam_role
   handler    = "dynamodb_crawler.handler"
   timeout       = 300
   runtime       = "python3.9"
+  source_code_hash = filebase64sha256("../build/joke-crawler.zip")
   layers         =[aws_lambda_layer_version.requests_layer.arn]
 
   environment {
