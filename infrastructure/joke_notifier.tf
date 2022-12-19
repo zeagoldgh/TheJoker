@@ -8,7 +8,7 @@ resource "aws_lambda_function" "joke_notifier" {
 
 environment {
     variables = {
-      JOKES_TOPIC_ARN = aws_sns_topic.jokes_topic.arn
+      TOPIC_ARN = aws_sns_topic.jokes_topic.arn
     }
   }
 }

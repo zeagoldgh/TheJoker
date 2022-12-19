@@ -6,7 +6,7 @@ topic_arn = os.getenv("TOPIC_ARN")
 
 def inform_when_there_is_a_new_joke(value, id):
     client.publish(
-        TopicArn=topic_arn,
+        TopicArn= topic_arn,
         Message= "New Joke: "+ value +" \n "+id,
         Subject= "New Joke: " + value
     )
@@ -28,5 +28,3 @@ def handler_record(record):
 def handler(event, context):
     for record in event["Records"]:
         handler_record(record)
-    print(event)
-    
