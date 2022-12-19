@@ -19,6 +19,13 @@ cd ../..
 # "upload to s3"
 aws s3 cp build/joke-crawler.zip s3://joke-src-bucket-dzaa1417/
 
+cd joke-data-notifier/src
+zip -r ../../build/sns-notifier.zip .
+cd ../..
+
+# "upload to s3"
+aws s3 cp build/sns-notifier.zip s3://joke-src-bucket-dzaa1417/
+
 cd requests-layer
 pip3 install -r requirements.txt --target python/lib/python3.9/site-packages
 zip -r ../build/requests-layer.zip .
