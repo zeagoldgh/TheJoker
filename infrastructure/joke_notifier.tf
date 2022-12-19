@@ -1,10 +1,11 @@
 resource "aws_lambda_function" "joke_notifier" {
   function_name = "joke_notifier"
-  filename        = "build/sns-notifier.zip"
+  filename        = "../build/sns-notifier.zip"
   role          = local.iam_role
   handler       = "sns_notifier.handler"
   timeout       = 300
   runtime       = "python3.9"
+  source_code_hash = filebase64sha256("../build/sns-notifier.zip")
 
 environment {
     variables = {

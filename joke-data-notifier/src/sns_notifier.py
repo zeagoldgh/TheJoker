@@ -14,10 +14,9 @@ def inform_when_there_is_a_new_joke(value, id):
 
 
 def handler_new_image(newImage):
-    value = newImage["value"]["s"]
-    id = newImage["id"]["s"]
-    if "aws" in value.lower or "aws" in id.lower():
-        inform_when_there_is_a_new_joke(value, id)
+    value = newImage["value"]["S"]
+    id = newImage["id"]["S"]
+    inform_when_there_is_a_new_joke(value, id)
 
 
 def handler_record(record):
