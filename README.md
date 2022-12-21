@@ -1,5 +1,7 @@
-# TheJoker
-Virtual mentorship for teens, anxiety, and depression people in need
+# Capstone Project
+
+the-joker is a serverless cloud app. It offers a new approach to Virtual mentorship for teens, anxiety, and depression people in need. We adhere to the principle of maximum compliance and full transparency in knowing users problems and finding the best joke and cancelling solutions. We strive to establish long-term relationships with users 
+
 
 sns_notifier.py has to be run with (Dynamodb update) template event. Example:
 
